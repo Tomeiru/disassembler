@@ -54,7 +54,7 @@ const SEGMENTS: [Register; 4] = [Register::Es, Register::Cs, Register::Ss, Regis
 impl Register {
     pub fn get(value: u8, word: bool) -> Result<Register, &'static str> {
         if value > 8 {
-            return Err("");
+            return Err("a register with this value does not exist");
         }
         return Ok(REGISTERS[usize::from(!word)][usize::from(value)]);
     }
@@ -90,5 +90,9 @@ impl Register {
             Register::Ss => "ss",
             Register::Ds => "ds",
         };
+    }
+
+    pub fn to_string(&self) -> String {
+        return self.to_str().to_string();
     }
 }

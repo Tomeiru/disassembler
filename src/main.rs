@@ -1,6 +1,8 @@
+mod disp;
 mod header;
 mod instruction;
 mod register;
+mod register_memory;
 
 use std::{env, fs, process, usize};
 
