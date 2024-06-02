@@ -31,7 +31,7 @@ fn recognize(bytes: &[u8]) -> bool {
     return bytes[0] & 0b11111100 == 0b00000000;
 }
 
-fn disassemble(bytes: &[u8]) -> Result<(Vec<String>, Vec<u8>), &'static str> {
+pub fn disassemble(bytes: &[u8]) -> Result<(Vec<String>, Vec<u8>), &'static str> {
     if bytes.len() < 2 {
         return Err("size");
     }

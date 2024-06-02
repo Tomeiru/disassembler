@@ -1,6 +1,6 @@
 use super::InstructionCategory;
 
-mod rm_with_reg_to_either;
+pub mod rm_with_reg_to_either;
 
 pub fn get_category() -> InstructionCategory {
     return InstructionCategory {
