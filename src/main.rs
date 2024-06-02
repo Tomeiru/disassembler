@@ -40,6 +40,7 @@ fn main() {
     let mut i = 0;
     while i < text.len() {
         let mut treated_bytes = 1;
+        let mut found = false;
         for category in &categories {
             for instruction in &category.instructions {
                 if !(instruction.recognize)(&text[i..]) {
@@ -59,6 +60,11 @@ fn main() {
                     category.mnemonic,
                     formatted_arguments.join(", ")
                 );
+                found = true;
+                break;
+            }
+            if found {
+                break;
             }
         }
         i += treated_bytes;
