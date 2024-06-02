@@ -1,13 +1,15 @@
+mod destination;
 mod disp;
 mod header;
 mod instruction;
+mod modifier;
 mod register;
 mod register_memory;
+mod word;
 
 use std::{env, fs, process, usize};
 
-// TODO: overhaul error printing
-// TODO: program loop
+// TODO: overhaul errors
 fn main() {
     let args: Vec<String> = env::args().collect();
     if args.len() != 2 {

@@ -1,5 +1,6 @@
 use crate::disp;
 use crate::register;
+use crate::word;
 
 pub struct RegisterMemory {
     regs: Vec<register::Register>,
@@ -31,11 +32,9 @@ impl RegisterMemory {
         });
     }
 
-    // TODO: determine exception case writing
-    // TODO: replace by disp type and its methods
-    pub fn to_string(&self, modifier: u8, disp: &disp::Disp) -> String {
+    pub fn to_string(&self, disp: &disp::Disp) -> String {
         let mut result: String = "".to_string();
-        if self.value == 0b110 && modifier == 0b00 {
+        if disp.is_exception_case() {
             return format!("[{}]", &disp.to_exception_case_string());
         }
         for (idx, &reg) in self.regs.iter().enumerate() {
@@ -44,7 +43,15 @@ impl RegisterMemory {
             }
             result.push_str(reg.to_str());
         }
-        result.push_str(&disp.to_string());
+        result.push_str(&disp.to_standard_string());
         return format!("[{}]", result);
+    }
+
+    pub fn to_register(&self, word: word::Word) -> register::Register {
+        return register::Register::get(self.value, word).unwrap();
+    }
+
+    pub fn is_exceptional_rm(&self) -> bool {
+        return self.value == 0b110;
     }
 }
