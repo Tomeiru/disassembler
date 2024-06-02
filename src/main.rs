@@ -56,7 +56,7 @@ fn main() {
                     "{:04x}: {:<13} {} {}",
                     i,
                     formatted_instructions.join(""),
-                    "mov",
+                    category.mnemonic,
                     formatted_arguments.join(", ")
                 );
             }
