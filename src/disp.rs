@@ -27,7 +27,14 @@ impl Disp {
         }
         if *modifier == modifier::Modifier::SignExtendedDispLow {
             return Ok(Disp {
-                value: i16::from_be_bytes([0b11111111, bytes[0]]),
+                value: i16::from_be_bytes([
+                    if bytes[0] & 0b10000000 == 0b10000000 {
+                        0b11111111
+                    } else {
+                        0b00000000
+                    },
+                    bytes[0],
+                ]),
                 exception_case: false,
                 used_bytes: 1,
             });

@@ -90,6 +90,14 @@ mod tests {
     }
 
     #[test]
+    fn correct_sign_extended_low_disp_low_value_dissassembly() {
+        let bytes: [u8; 3] = [0b00000000, 0b01010101, 0x01];
+        let (arguments, instruction_bytes) = disassemble(&bytes).unwrap();
+        assert_eq!(arguments, ["[di+1]".to_string(), "dl".to_string()]);
+        assert_eq!(instruction_bytes, bytes);
+    }
+
+    #[test]
     fn correct_no_disp_disassembly() {
         let bytes: [u8; 2] = [0b00000000, 0b00000000];
         let (arguments, instruction_bytes) = disassemble(&bytes).unwrap();
