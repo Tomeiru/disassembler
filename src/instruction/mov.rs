@@ -4,6 +4,7 @@ mod immediate_to_register;
 mod immediate_to_rm;
 mod memory_tf_accumulator;
 mod rm_tf_register;
+mod rm_tf_segment;
 
 pub fn get_category() -> InstructionCategory {
     return InstructionCategory {
@@ -13,6 +14,7 @@ pub fn get_category() -> InstructionCategory {
             immediate_to_rm::get_instruction(),
             memory_tf_accumulator::get_instruction(),
             rm_tf_register::get_instruction(),
+            rm_tf_segment::get_instruction(),
         ],
     };
 }

@@ -10,6 +10,7 @@ mod word;
 use std::{env, fs, process, usize};
 
 // TODO: overhaul errors
+// TODO: think about how to handle size checks in instructions
 fn main() {
     let args: Vec<String> = env::args().collect();
     if args.len() != 2 {
