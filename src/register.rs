@@ -59,6 +59,13 @@ impl Register {
         return Ok(REGISTERS[usize::from(!word)][usize::from(value)]);
     }
 
+    pub fn get_accumulator(word: bool) -> Register {
+        if word {
+            return Register::Ax;
+        }
+        return Register::Al;
+    }
+
     #[allow(dead_code)]
     pub fn get_segment(value: u8) -> Result<Register, &'static str> {
         if value > 4 {

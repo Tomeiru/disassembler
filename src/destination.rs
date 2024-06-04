@@ -1,16 +1,16 @@
 pub struct Destination {
-    to_reg: bool,
+    to_first: bool,
 }
 
 impl Destination {
-    pub fn get(to_reg: bool) -> Destination {
-        return Destination { to_reg };
+    pub fn get(to_first: bool) -> Destination {
+        return Destination { to_first };
     }
 
-    pub fn order_elements(&self, reg: String, other: String) -> [String; 2] {
-        if self.to_reg {
-            return [reg, other];
+    pub fn order_elements(&self, first: String, second: String) -> [String; 2] {
+        if self.to_first {
+            return [first, second];
         }
-        return [other, reg];
+        return [second, first];
     }
 }
