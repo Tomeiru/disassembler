@@ -1,7 +1,5 @@
 use crate::{disp, instruction, modifier, register_memory, word};
 
-// TODO: unit testing
-
 struct Arguments {
     word: word::Word,
     modifier: modifier::Modifier,
@@ -59,4 +57,24 @@ pub fn get_instruction() -> instruction::Instruction {
         recognize,
         disassemble,
     };
+}
+
+#[cfg(test)]
+mod tests {
+    // TODO: unit testing
+
+    // use super::disassemble;
+    use super::recognize;
+
+    #[test]
+    fn good_recognition() {
+        let bytes: [u8; 2] = [0b11000110, 0b00000000];
+        assert_eq!(recognize(&bytes), true);
+    }
+
+    #[test]
+    fn bad_recognition() {
+        let bytes: [u8; 2] = [0b10000110, 0b00001000];
+        assert_eq!(recognize(&bytes), false);
+    }
 }
