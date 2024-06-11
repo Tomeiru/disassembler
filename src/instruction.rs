@@ -1,6 +1,7 @@
 mod add;
 mod int;
 mod mov;
+mod push;
 
 pub struct Instruction {
     pub recognize: fn(&[u8]) -> bool,
@@ -12,10 +13,11 @@ pub struct InstructionCategory {
     pub instructions: Vec<Instruction>,
 }
 
-pub fn create_categories() -> [InstructionCategory; 3] {
+pub fn create_categories() -> [InstructionCategory; 4] {
     return [
         add::get_category(),
         int::get_category(),
         mov::get_category(),
+        push::get_category(),
     ];
 }
