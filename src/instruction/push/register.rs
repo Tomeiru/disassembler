@@ -14,7 +14,7 @@ fn recognize(bytes: &[u8]) -> bool {
     return bytes[0] & 0b11111000 == 0b01010000;
 }
 
-fn disassemble(bytes: &[u8]) -> Result<(Vec<String>, Vec<u8>), &'static str> {
+pub fn disassemble(bytes: &[u8]) -> Result<(Vec<String>, Vec<u8>), &'static str> {
     let args = parse_instruction(bytes);
     let mut arguments: Vec<String> = vec![];
     let mut instruction_bytes: Vec<u8> = vec![];
