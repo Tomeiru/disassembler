@@ -1,4 +1,5 @@
 mod add;
+mod in_instr;
 mod int;
 mod mov;
 mod pop;
@@ -15,9 +16,10 @@ pub struct InstructionCategory {
     pub instructions: Vec<Instruction>,
 }
 
-pub fn create_categories() -> [InstructionCategory; 6] {
+pub fn create_categories() -> [InstructionCategory; 7] {
     return [
         add::get_category(),
+        in_instr::get_category(),
         int::get_category(),
         mov::get_category(),
         pop::get_category(),
